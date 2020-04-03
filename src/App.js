@@ -1,17 +1,32 @@
-import React from 'react';
-import WeatherLocation from './Components/WeatherLocation';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import LocationList from './Components/LocationList';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        hola weono
-        <WeatherLocation/>
-      </header>
-    </div>
-  );
+import './App.css';
+const cities = [
+  'Buenos Aires,ar',
+  'Washington,us',
+  'Bogota,col',
+  'Lima,pe',
+  'Madrid, es',  
+];
+
+class App extends Component {
+
+    handleSelectedLocation = city => {
+      console.log(`handleSelectedLocation ${city}`);
+    }
+    render() {
+    return (
+      <div className="App">
+        <header className="App-header">
+        
+          <LocationList cities={cities}
+          onSelectedLocation={this.handleSelectedLocation} ></LocationList>
+
+        </header>
+      </div>
+    );
+  }  
 }
 
 export default App;
